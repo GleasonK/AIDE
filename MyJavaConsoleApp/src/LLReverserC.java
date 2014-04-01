@@ -18,12 +18,30 @@ public class LLReverserC<I> implements LLReverser<I>
  public I pop(){
   return this.ll.pop();
  }
+ 
+ public void give(){
+	 this.dq.push(this.pop());
+ }
+ public void get(){
+	 this.push(this.dq.pollLast());
+ }
+ 
+ public boolean isEmpty(){
+	 return this.ll.isEmpty();
+ }
 
  
- public LLReverser reverse(){
-     while (!this.ll.isEmpty()){
-         
-     }
+ public LLReverser<I> reverse(){
+     if (!this.isEmpty()) {
+		 this.give();
+		 return reverse();
+	 }
+	 while (!this.dq.isEmpty()) this.get();
+	 return this;
+ }
+ 
+ public String toString(){
+	 return this.ll.toString();
  }
  
  public static void main(String[] args){
@@ -32,7 +50,9 @@ public class LLReverserC<I> implements LLReverser<I>
   llr.push(10);
   llr.push(15);
   llr.push(4);
-  llr.toString();
+  System.out.println("Original" + llr.toString());
+  LLReverser<Integer> llr2 = llr.reverse();
+  System.out.println("Reversed" + llr2.toString());
   
  }
 }
