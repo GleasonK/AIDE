@@ -18,14 +18,22 @@ public class Main
 		System.out.printf("The product of both numbers is: %f", product);
 		System.out.println();
 		
-		double fact = factorial(number1);
+		double fact = factorial((int) number1);
 		System.out.println("Factorial " + number1 + " is " + fact);
+		
+		int countOf8 = count8((int) number2);
+		System.out.println("Count8 in " + (int) number2 + " is " + countOf8);
 	}
 	
-	public static double factorial(double n){
+	public static int factorial(int n){
 		if (n==1) return 1;
 		return n * factorial(n-1);
 	}
 	
-	public int
+	public static int count8(int n){
+		if (n%10==0) return 0;
+		if (n%10==8 && n/10%10==8) return 2+count8(n/10);
+		if (n%10==8) return 1 + count8(n/10);
+		return count8(n/10);
+	}
 }
