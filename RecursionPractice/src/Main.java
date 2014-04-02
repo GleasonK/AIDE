@@ -23,6 +23,9 @@ public class Main
 		
 		int countOf8 = count8((int) number2);
 		System.out.println("Count8 in " + (int) number2 + " is " + countOf8);
+		
+		int bunnies = bunnyEars((int) number2);
+		System.out.println("Total ears on " + (int) number2 +" bunnies is " + bunnies);
 	}
 	
 	public static int factorial(int n){
@@ -35,5 +38,9 @@ public class Main
 		if (n%10==8 && n/10%10==8) return 3+count8(n/10);
 		if (n%10==8) return 1 + count8(n/10);
 		return count8(n/10);
+	}
+	public static int bunnyEars(int bunnies) {
+		if (bunnies==0) return bunnies;
+		return 2+bunnyEars(bunnies-1);
 	}
 }
