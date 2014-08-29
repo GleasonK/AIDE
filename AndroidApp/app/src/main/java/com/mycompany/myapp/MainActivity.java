@@ -4,6 +4,7 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
+import android.content.res.*;
 
 public class MainActivity extends Activity 
 {
@@ -12,6 +13,12 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		
+		EditText totalText = (EditText) findViewById(R.id.mainTotal);
+		EditText tipText = (EditText) findViewById(R.id.mainTip);
+		
+		totalText.setRawInputType(Configuration.KEYBOARD_12KEY);
+		tipText.setRawInputType(Configuration.KEYBOARD_12KEY);
     }
 	
 	public void doCalculate(View view){
