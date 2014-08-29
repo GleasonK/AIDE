@@ -28,10 +28,17 @@ public class MainActivity extends Activity
 		TextView totalView = (TextView) findViewById(R.id.mainTotalView);
 		TextView tipView = (TextView) findViewById(R.id.mainTipView);
 		TextView totalWithTipView = (TextView) findViewById(R.id.mainTotalWithTipView);
-		
-		double total = Double.valueOf(totalText.getText().toString());
-		double tipPercent = Double.valueOf(tipText.getText().toString());
-		
+		double total, tipPercent;
+		try{
+		    total = Double.valueOf(totalText.getText().toString());
+		    tipPercent = Double.valueOf(tipText.getText().toString());
+		} catch(NumberFormatException e) {
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+			
+			totalText.setText("");
+			tipText.setText("");
+			return;
+		}
 		double tip = total * (tipPercent/100);
 		double toPay = total + tip;
 		
